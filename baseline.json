@@ -1,0 +1,12 @@
+{
+  "original_sha256": "2c2f3926e1f8f8092809f5de0624ac8f2197bb341a2870d408ce0250f13f094a",
+  "original_size": 139691008,
+  "json_offset": 114965246,
+  "json_size": 168830,
+  "json_sha256": "514c3cffb7f689d8995bb068b88d66450428bcc6681b889a262ea2d1cccf2dbb",
+  "label_offset": 114965234,
+  "entries": 2632,
+  "font_offset": 117676484,
+  "font_size": 1225410,
+  "font_sha256": "d145063c4f54417778c7e92cf85a9cb12fbf2ce08c54aa3384d0bbee760232e5"
+}

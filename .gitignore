@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.exe
+*.original
+*.ttf
+*.ttc
+*.otf
+*.zip
+*.sha256
+backup/
+installed.json
+*.zhtw-new
+tests/fixtures/

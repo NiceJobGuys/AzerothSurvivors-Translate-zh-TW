@@ -1,0 +1,22 @@
+{
+  "game.title": "艾澤拉斯倖存者",
+  "picker.support": "請我喝杯咖啡 :)",
+  "class.hunter.blurb": "從遠處帶來死亡。運用箭矢、陷阱與亂射，與敵人保持距離。",
+  "class.mage.blurb": "威力驚人卻不堪一擊。擁有艾澤拉斯最強的範圍傷害，但缺乏自保手段。",
+  "race.scourge.name": "不死族",
+  "race.human.line2": "人類精魂：經驗值提高10%",
+  "race.tauren.line2": "耐久：最大生命值提高15%",
+  "race.gnome.line2": "開闊思維：冷卻時間縮短8%",
+  "options.restore": "還原",
+  "picker.controls_hint": "WASD或同時按住滑鼠左右鍵移動 · 1 2 3選擇卡牌 · R重抽 · Enter開始",
+  "options.imported": "已匯入{name}：目前進度已替換為該檔案中的進度。",
+  "options.hint.gamepad": "左搖桿移動，右搖桿轉動視角，A鍵跳躍，肩鍵和扳機鍵縮放，Y鍵開啟保留的升級選擇。變更立即生效。",
+  "menu.windowed": "視窗模式",
+  "noun.leather.4": "束褲",
+  "set.priest.1": "虔誠",
+  "set.druid.1": "狂野之心",
+  "ability.exorcism.name": "驅邪術",
+  "ability.corruption.name": "腐蝕術",
+  "ability.thorns.name": "荊棘術",
+  "ability.escape_artist.name": "逃命專家"
+}
