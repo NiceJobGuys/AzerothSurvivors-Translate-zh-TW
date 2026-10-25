@@ -1,8 +1,15 @@
 # Azeroth Survivors 繁體中文化
 
-適用於 2026-10-26 更新的 Windows 版，涵蓋遊戲語系表全部 **2,929 筆文字**。以原有簡中譯文轉換繁體字，搭配 CoA 既有繁中術語與人工修訂，替換簡中語系為「繁體中文」；其他語系保留。
+適用於 **Azeroth Survivors 0.116.0（Windows，Build `7ea12bb5`）**，涵蓋遊戲語系表全部 **2,929 筆文字**。以原有簡中譯文轉換繁體字，搭配 CoA 既有繁中術語與人工修訂，替換簡中語系為「繁體中文」；其他語系保留。
 
 遊戲官方網站：https://wow.aethus.pl/
+
+| 適用遊戲版本（Windows） | 遊戲 Build | 中文化版本 | 翻譯筆數 |
+| --- | --- | --- | --- |
+| **0.116.0** | `7ea12bb5` | [v1.1.0](https://github.com/NiceJobGuys/AzerothSurvivors-Translate-zh-TW/releases/tag/v1.1.0) | 2,929 |
+| 0.102.3 | `f78e6fab` | [v1.0.0](https://github.com/NiceJobGuys/AzerothSurvivors-Translate-zh-TW/releases/tag/v1.0.0) | 2,632 |
+
+遊戲版本與 Build 由各版原始 EXE 的內嵌版本字串確認。中文化版本號與遊戲版本號分開計算；檢查日期為 2026-10-26。
 
 以原版 SHA-256 鎖定相容版本：
 
@@ -10,7 +17,7 @@
 d57dbb9f6b325e502204940ac7e3b82bab2ea7db6022c68a9b2bebb91c556bc9
 ```
 
-中文化工具版本為 **1.1.0**。本次新增 309 筆、移除 12 個舊鍵，另更新既有文字；包含合作連線、外觀及首領提示。原始碼與翻譯公開提供，工具下載包放在 GitHub Releases。前一個遊戲版本請使用 [v1.0.0](https://github.com/NiceJobGuys/AzerothSurvivors-Translate-zh-TW/releases/tag/v1.0.0)。
+中文化工具版本為 **1.1.0**。本次新增 309 筆、移除 12 個舊鍵，另更新既有文字；包含合作連線、外觀及首領提示。原始碼與翻譯公開提供，工具下載包放在 GitHub Releases。遊戲 **0.102.3** 請使用 [v1.0.0](https://github.com/NiceJobGuys/AzerothSurvivors-Translate-zh-TW/releases/tag/v1.0.0)。
 
 ## 下載與套用
 
