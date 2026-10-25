@@ -80,7 +80,9 @@ def make_patch(data, baseline, source, target, font):
     start, size = baseline["json_offset"], baseline["json_size"]
     font_start, font_size = baseline["font_offset"], baseline["font_size"]
     label_start = baseline["label_offset"]
-    if not (0 <= label_start < label_start + 12 <= start < start + size <= font_start < font_start + font_size <= len(data)):
+    ranges = sorted([(label_start, 12), (start, size), (font_start, font_size)])
+    if (any(offset < 0 or length <= 0 or offset + length > len(data) for offset, length in ranges) or
+            any(offset + length > following for (offset, length), (following, _) in zip(ranges, ranges[1:]))):
         raise ValueError("補丁範圍無效或重疊")
     if digest(data[start:start + size]) != baseline["json_sha256"]:
         raise ValueError("原版語系區塊不符")

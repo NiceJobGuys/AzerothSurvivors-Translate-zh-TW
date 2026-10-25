@@ -6,10 +6,8 @@ import re
 import sqlite3
 from pathlib import Path
 
-from opencc import OpenCC
-
 ROOT = Path(__file__).resolve().parents[1]
-SUPPORTED_SHA256 = "2c2f3926e1f8f8092809f5de0624ac8f2197bb341a2870d408ce0250f13f094a"
+SUPPORTED_SHA256 = "d57dbb9f6b325e502204940ac7e3b82bab2ea7db6022c68a9b2bebb91c556bc9"
 
 
 def unique_object(pairs):
@@ -22,10 +20,10 @@ def unique_object(pairs):
 
 
 def extract(data, label):
-    marker = label.encode() + b'{\n  "game.title"'
-    if data.count(marker) != 1:
+    markers = list(re.finditer(re.escape(label.encode()) + rb'\{\r?\n  "game.title"', data))
+    if len(markers) != 1:
         raise ValueError(f"Language marker is not unique: {label}")
-    offset = data.index(marker) + len(label.encode())
+    offset = markers[0].start() + len(label.encode())
     text = data[offset:offset + 500_000].decode("utf-8", errors="replace")
     table, end = json.JSONDecoder(object_pairs_hook=unique_object).raw_decode(text)
     raw = text[:end].encode()
@@ -39,6 +37,8 @@ def write_json(name, value):
 
 
 def main():
+    from opencc import OpenCC
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("exe", type=Path)
     parser.add_argument("--terms-db", type=Path, help="Import relevant approved CoA terms once")
@@ -60,9 +60,9 @@ def main():
         "json_sha256": hashlib.sha256(raw).hexdigest(),
         "label_offset": offset - len("简体中文".encode()),
         "entries": len(chinese),
-        "font_offset": 117676484,
+        "font_offset": 118958692,
         "font_size": 1225410,
-        "font_sha256": hashlib.sha256(data[117676484:118901894]).hexdigest(),
+        "font_sha256": hashlib.sha256(data[118958692:120184102]).hexdigest(),
     })
     name_keys = [key for key in english if re.match(r"(?:class|race|zone|ability|enemy|boss|weapon|starter|set)\.", key)
                  and not key.endswith((".blurb", ".line1", ".line2", ".line3", ".subtitle"))]

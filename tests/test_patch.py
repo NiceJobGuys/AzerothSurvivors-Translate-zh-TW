@@ -7,6 +7,7 @@ from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import patch
+from tools.prepare import extract
 
 FIXTURE_ROOT = Path(__file__).resolve().parent / "fixtures"
 
@@ -72,11 +73,38 @@ class PatchTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "範圍"):
             self.apply(baseline={**self.baseline, "font_offset": 190})
 
+    def test_font_can_precede_language(self):
+        data = b"PREFIXFONT" + self.data[6:198] + b"END"
+        baseline = {**self.baseline, "original_sha256": patch.digest(data),
+                    "label_offset": 10, "json_offset": 22, "font_offset": 6}
+        result = self.apply(data=data, baseline=baseline)
+        self.assertEqual(result[:6], b"PREFIX")
+        self.assertEqual(result[6:10], b"TT\0\0")
+        self.assertEqual(result[10:22], "繁體中文".encode())
+        self.assertEqual(json.loads(result[22:202]), self.target)
+        self.assertEqual(result[202:], b"END")
+
+    def test_extract_lf_and_crlf(self):
+        table = {"game.title": "測試", "line": "{n} 行"}
+        for newline in ["\n", "\r\n"]:
+            raw = json.dumps(table, ensure_ascii=False, indent=2).replace("\n", newline).encode()
+            offset, actual, values = extract(b"English" + raw + b"\xff", "English")
+            self.assertEqual(offset, 7)
+            self.assertEqual(actual, raw)
+            self.assertEqual(values, table)
+
+    def test_extract_rejects_duplicate_marker_and_key(self):
+        raw = b'English{\n  "game.title": "test"}'
+        with self.assertRaisesRegex(ValueError, "unique"):
+            extract(raw + raw, "English")
+        with self.assertRaisesRegex(ValueError, "Duplicate"):
+            extract(b'English{\n  "game.title": "a", "game.title": "b"}', "English")
+
     def test_installed_dictionary(self):
         source = patch.load_json(patch.ROOT / "en.json")
         target = patch.load_json(patch.ROOT / "zh-TW.json")
         patch.validate_translation(source, target)
-        self.assertEqual(len(target), 2632)
+        self.assertEqual(len(target), 2929)
         self.assertEqual(target["class.rogue.name"], "盜賊")
         self.assertEqual(target["race.troll.name"], "食人妖")
         self.assertEqual(target["race.gnome.name"], "地精")

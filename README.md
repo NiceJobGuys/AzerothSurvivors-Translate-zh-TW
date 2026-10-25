@@ -1,20 +1,20 @@
 # Azeroth Survivors 繁體中文化
 
-適用於 2026-10-25 檢查的 Windows 版，涵蓋遊戲語系表全部 **2,632 筆文字**。以原有簡中譯文轉換繁體字，搭配 CoA 既有繁中術語與人工修訂，替換簡中語系為「繁體中文」；其他語系保留。
+適用於 2026-10-26 更新的 Windows 版，涵蓋遊戲語系表全部 **2,929 筆文字**。以原有簡中譯文轉換繁體字，搭配 CoA 既有繁中術語與人工修訂，替換簡中語系為「繁體中文」；其他語系保留。
 
 遊戲官方網站：https://wow.aethus.pl/
 
-遊戲 EXE 未提供 Windows 版本資訊，因此以原版 SHA-256 鎖定相容版本：
+以原版 SHA-256 鎖定相容版本：
 
 ```text
-2c2f3926e1f8f8092809f5de0624ac8f2197bb341a2870d408ce0250f13f094a
+d57dbb9f6b325e502204940ac7e3b82bab2ea7db6022c68a9b2bebb91c556bc9
 ```
 
-中文化工具版本為 **1.0.0**。原始碼與翻譯公開提供，工具下載包放在 GitHub Releases。
+中文化工具版本為 **1.1.0**。本次新增 309 筆、移除 12 個舊鍵，另更新既有文字；包含合作連線、外觀及首領提示。原始碼與翻譯公開提供，工具下載包放在 GitHub Releases。前一個遊戲版本請使用 [v1.0.0](https://github.com/NiceJobGuys/AzerothSurvivors-Translate-zh-TW/releases/tag/v1.0.0)。
 
 ## 下載與套用
 
-1. 從[最新版本](https://github.com/NiceJobGuys/AzerothSurvivors-Translate-zh-TW/releases/latest)下載 `AzerothSurvivors-zhTW-1.0.0.zip`，完整解壓並保留所有 JSON 與程式。
+1. 從[最新版本](https://github.com/NiceJobGuys/AzerothSurvivors-Translate-zh-TW/releases/latest)下載 `AzerothSurvivors-zhTW-1.1.0.zip`，完整解壓並保留所有 JSON 與程式。
 2. 需要 Windows、Python 3.10 以上及本機的微軟正黑體。安裝工具需要的字型處理套件：
 
 ```powershell
@@ -24,7 +24,7 @@ python -m pip install -r .\requirements.txt
 3. 正常關閉遊戲，在解壓後的目錄執行下列指令；遊戲與備份路徑可依實際位置調整：
 
 ```powershell
-python -B -X utf8 .\patch.py apply "D:\Games\azeroth-survivors\AzerothSurvivorsWindowsNew\AzerothSurvivors\AzerothSurvivors.exe" "D:\Code\Lab Testing\Artifacts\backup\azerothsurvivors-zh-tw"
+python -B -X utf8 .\patch.py apply "D:\Games\azeroth-survivors\AzerothSurvivorsWindowsNew\AzerothSurvivors\AzerothSurvivors.exe" "D:\Code\Lab Testing\Artifacts\backup\azerothsurvivors-zh-tw-1.1.0"
 ```
 
 工具驗證整個原版 EXE 的雜湊，保留原檔備份後，才替換遊戲 EXE。文字與中文字型沿用原有固定容量，不移動執行檔其他資料；超出容量會停止。工具會從玩家本機的 `C:\Windows\Fonts\msjh.ttc` 產生字型子集，不下載、不安裝或發布字型。
@@ -46,12 +46,12 @@ python -B -X utf8 .\patch.py build "D:\Games\azeroth-survivors\AzerothSurvivorsW
 正常關閉遊戲後還原：
 
 ```powershell
-python -B -X utf8 .\patch.py restore "D:\Games\azeroth-survivors\AzerothSurvivorsWindowsNew\AzerothSurvivors\AzerothSurvivors.exe" "D:\Code\Lab Testing\Artifacts\backup\azerothsurvivors-zh-tw"
+python -B -X utf8 .\patch.py restore "D:\Games\azeroth-survivors\AzerothSurvivorsWindowsNew\AzerothSurvivors\AzerothSurvivors.exe" "D:\Code\Lab Testing\Artifacts\backup\azerothsurvivors-zh-tw-1.1.0"
 ```
 
 還原會核對目前遊戲與收據，以及原版備份的完整性；不覆蓋已更新或另行修改的遊戲。重複套用相同譯文或重複還原會直接回報現況。譯文修改後須先還原，再重新套用。
 
-遊戲更新可能覆蓋補丁。新版 EXE 雜湊不同時，本工具會停止，須重新檢查語系、字型位置及新增文字後才能適配。不要用舊版備份覆蓋新版遊戲。
+遊戲更新可能覆蓋補丁。新版 EXE 雜湊不同時，本工具會停止，須重新檢查語系、字型位置及新增文字後才能適配。不同遊戲版本使用不同備份目錄；本次保留 1.0.0 備份，另建立 1.1.0 備份。不要用舊版備份覆蓋新版遊戲。
 
 若替換時因遊戲未關閉、權限或儲存空間不足而失敗，原版備份會保留；同目錄可能留下 `AzerothSurvivors.exe.zhtw-new`。請先查看錯誤與雜湊，不要把它當成已安裝成功。
 
@@ -80,7 +80,8 @@ python -B -X utf8 -m unittest discover -s .\tests -v
 
 ## 驗證與已知限制
 
-- 全部 2,632 筆的鍵、非空文字與格式參數已檢查；數字未變更。
+- 全部 2,929 筆的鍵、非空文字與格式參數已檢查；數字未變更。
+- 13 項測試通過；已加入 CRLF 語系擷取及字型位於語系之前的回歸測試。
 - 建置後回讀語系 JSON，並驗證三個指定區塊之外的 EXE 資料一致。
 - 字型保留原有中文字型的全部字元，另加入繁中譯文所需字元；漢字缺字檢查通過。
 - 遊戲既有的表情符號繼續使用原本的 fallback，未新增表情符號字型。
