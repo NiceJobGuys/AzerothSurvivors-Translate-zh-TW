@@ -5,11 +5,15 @@ from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
-NAME = "AzerothSurvivors-zhTW-1.1.0"
+NAME = "AzerothSurvivors-zhTW-1.2.0"
 FILES = [
     "README.md", "VALIDATION.md", "patch.py", "requirements.txt", "baseline.json",
     "en.json", "zh-CN.json", "zh-TW.json", "wow-terms.json", "glossary.json", "overrides.json",
     "tools/prepare.py", "tools/package.py", "tests/test_patch.py", ".gitignore", ".gitattributes",
+    "AGENTS.md", "asset_patch.py", "assets-zh-TW.json", "assets-overrides.json",
+    "tools/export_assets.py", "tests/test_assets.py", "vendor/__init__.py", "vendor/mpq/__init__.py",
+    "vendor/mpq/reader.py", "vendor/mpq/writer.py", "vendor/mpq/crypto.py", "vendor/mpq/names.py",
+    "vendor/mpq/LICENSE.txt", "vendor/mpq/NOTICE.md",
 ]
 
 

@@ -2,6 +2,7 @@ __pycache__/
 *.pyc
 *.exe
 *.original
+*.[mM][pP][qQ]
 *.ttf
 *.ttc
 *.otf
@@ -9,5 +10,6 @@ __pycache__/
 *.sha256
 backup/
 installed.json
+assets-installed.json
 *.zhtw-new
 tests/fixtures/
