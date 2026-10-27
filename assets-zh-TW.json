@@ -1,6 +1,6 @@
 {
-  "game_version": "0.116.0",
-  "game_build": "7ea12bb5",
+  "game_version": "0.120.4",
+  "game_build": "93ecb257",
   "files": {
     "DBFilesClient\\AreaPOI.dbc": {
       "source_sha256": "d87a844fcffa43145f7740d94289e157dfaecee296b6358043a74fb28f5fcce5",

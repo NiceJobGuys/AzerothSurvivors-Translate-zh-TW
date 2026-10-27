@@ -1,12 +1,12 @@
 {
-  "original_sha256": "d57dbb9f6b325e502204940ac7e3b82bab2ea7db6022c68a9b2bebb91c556bc9",
-  "original_size": 145280000,
-  "json_offset": 122857749,
-  "json_size": 194212,
-  "json_sha256": "b72ec236c344b5659ff9a9c8fba208a7a19331d5faa155fe8c92d2bd13e8e0e5",
-  "label_offset": 122857737,
-  "entries": 2929,
-  "font_offset": 118958692,
+  "original_sha256": "7e3e3f9558de1d87e615592c7b5d83f00de393ac8efa4e67d8f9b634ed07d6bf",
+  "original_size": 145489408,
+  "json_offset": 123055012,
+  "json_size": 196874,
+  "json_sha256": "e70aeffd51747db36a4c8263685c9b0e73ca90729ad76f64324710ae41bf16a3",
+  "label_offset": 123055000,
+  "entries": 2990,
+  "font_offset": 118999084,
   "font_size": 1225410,
   "font_sha256": "d145063c4f54417778c7e92cf85a9cb12fbf2ce08c54aa3384d0bbee760232e5"
 }

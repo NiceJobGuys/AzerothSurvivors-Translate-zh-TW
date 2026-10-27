@@ -104,7 +104,7 @@ class PatchTests(unittest.TestCase):
         source = patch.load_json(patch.ROOT / "en.json")
         target = patch.load_json(patch.ROOT / "zh-TW.json")
         patch.validate_translation(source, target)
-        self.assertEqual(len(target), 2929)
+        self.assertEqual(len(target), 2990)
         self.assertEqual(target["class.rogue.name"], "盜賊")
         self.assertEqual(target["race.troll.name"], "食人妖")
         self.assertEqual(target["race.gnome.name"], "地精")

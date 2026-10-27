@@ -7,7 +7,7 @@ import sqlite3
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SUPPORTED_SHA256 = "d57dbb9f6b325e502204940ac7e3b82bab2ea7db6022c68a9b2bebb91c556bc9"
+SUPPORTED_SHA256 = "7e3e3f9558de1d87e615592c7b5d83f00de393ac8efa4e67d8f9b634ed07d6bf"
 
 
 def unique_object(pairs):
@@ -60,9 +60,9 @@ def main():
         "json_sha256": hashlib.sha256(raw).hexdigest(),
         "label_offset": offset - len("简体中文".encode()),
         "entries": len(chinese),
-        "font_offset": 118958692,
+        "font_offset": 118999084,
         "font_size": 1225410,
-        "font_sha256": hashlib.sha256(data[118958692:120184102]).hexdigest(),
+        "font_sha256": hashlib.sha256(data[118999084:120224494]).hexdigest(),
     })
     name_keys = [key for key in english if re.match(r"(?:class|race|zone|ability|enemy|boss|weapon|starter|set)\.", key)
                  and not key.endswith((".blurb", ".line1", ".line2", ".line3", ".subtitle"))]

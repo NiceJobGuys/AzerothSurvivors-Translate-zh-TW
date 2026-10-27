@@ -21,7 +21,7 @@ def main():
     parser.add_argument("game_dir", type=Path)
     args = parser.parse_args()
     db = sqlite3.connect(args.audit.resolve().as_uri() + "?mode=ro", uri=True)
-    result = {"game_version": "0.116.0", "game_build": "7ea12bb5", "files": {}}
+    result = {"game_version": "0.120.4", "game_build": "93ecb257", "files": {}}
     origins = Counter()
     with (args.game_dir / "Data/patch.MPQ").open("rb") as stream, mmap.mmap(stream.fileno(), 0, access=mmap.ACCESS_READ) as mm:
         archive = Archive(mm)
