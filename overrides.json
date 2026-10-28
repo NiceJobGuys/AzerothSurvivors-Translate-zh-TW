@@ -49,5 +49,15 @@
   "Reconnected to the party.": "已重新連線至隊伍。",
   "The host lost connection, reconnecting...": "房主已斷線，正在重新連線……",
   "Your connection to the party dropped, reconnecting...": "你與隊伍的連線已中斷，正在重新連線……",
-  "{hero} lost connection, reconnecting...": "{hero}已斷線，正在重新連線……"
+  "{hero} lost connection, reconnecting...": "{hero}已斷線，正在重新連線……",
+  "armory.star_cap_none": "在對應區域通關英雄 I 難度，即可開放星級",
+  "armory.star_locked": "你的{class}在{zones}通關{heroic}後，即可開放{stars}星。",
+  "armory.set_tip_stars": "你的{class}在{zones}通關{heroic}後，此套裝即可開放{stars}星。",
+  "armory.set_tip_title4": "{set}：4件套裝加成",
+  "armory.set_tip_title8": "{set}：8件套裝加成",
+  "armory.set_count": "至少{stars}星的部件：{n}/{of}",
+  "Can join": "可加入",
+  "You host": "你是房主",
+  "The party's run": "隊伍的冒險",
+  "Heroes marked in red haven't opened this zone or difficulty with their class: they stay behind when the host enters.": "標紅的英雄尚未以目前職業解鎖這個區域或難度：房主進入時，他們將留在原處。"
 }

@@ -5,7 +5,7 @@ from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
-NAME = "AzerothSurvivors-zhTW-1.3.0"
+NAME = "AzerothSurvivors-zhTW-1.4.0"
 FILES = [
     "README.md", "VALIDATION.md", "patch.py", "requirements.txt", "baseline.json",
     "en.json", "zh-CN.json", "zh-TW.json", "wow-terms.json", "glossary.json", "overrides.json",
