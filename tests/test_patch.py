@@ -7,7 +7,7 @@ from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import patch
-from tools.prepare import extract
+from tools.prepare import extract, translation_sources
 
 FIXTURE_ROOT = Path(__file__).resolve().parent / "fixtures"
 
@@ -104,12 +104,37 @@ class PatchTests(unittest.TestCase):
         source = patch.load_json(patch.ROOT / "en.json")
         target = patch.load_json(patch.ROOT / "zh-TW.json")
         patch.validate_translation(source, target)
-        self.assertEqual(len(target), 3198)
+        self.assertEqual(len(target), 3334)
         self.assertEqual(target["class.rogue.name"], "盜賊")
         self.assertEqual(target["race.troll.name"], "食人妖")
         self.assertEqual(target["race.gnome.name"], "地精")
         self.assertEqual(target["race.scourge.name"], "不死族")
         self.assertNotIn("擴音", "".join(target.values()))
+
+    def test_missing_chinese_requires_explicit_translation(self):
+        en = {"a": "Known", "b": "Inspect"}
+        cn = {"a": "已有"}
+        with self.assertRaisesRegex(ValueError, "explicit translations"):
+            translation_sources(en, cn, {})
+        self.assertEqual(translation_sources(en, cn, {"b": "檢視"}), {"a": "已有", "b": "Inspect"})
+        with self.assertRaisesRegex(ValueError, "unknown English keys"):
+            translation_sources(en, {**cn, "extra": "多餘"}, {"b": "檢視"})
+
+    def test_new_version_missing_entries_and_stats(self):
+        from asset_patch import numbers
+        en = patch.load_json(patch.ROOT / "en.json")
+        cn = patch.load_json(patch.ROOT / "zh-CN.json")
+        tw = patch.load_json(patch.ROOT / "zh-TW.json")
+        overrides = patch.load_json(patch.ROOT / "overrides.json")
+        missing = en.keys() - cn.keys()
+        self.assertEqual(len(missing), 16)
+        self.assertTrue(missing <= overrides.keys())
+        self.assertTrue(all(tw[key] == overrides[key] and tw[key] != en[key] for key in missing))
+        for key in en:
+            self.assertEqual(numbers(cn.get(key, en[key])), numbers(tw[key]), key)
+        self.assertIn("20%", tw["race.human.line2"])
+        self.assertIn("30", tw["race.dwarf.line1"])
+        self.assertIn("45%", tw["race.dwarf.line1"])
 
     def test_apply_repeat_restore_and_refuse_unknown_files(self):
         FIXTURE_ROOT.mkdir(parents=True, exist_ok=True)
